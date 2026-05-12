@@ -2,7 +2,7 @@
 
 A DIY OBD2 data logger built with an ESP32. Reads live engine data over CAN bus, logs to CSV (SD card or internal flash), shows live values on a small OLED display, and serves a real-time web dashboard over WiFi.
 
-> **Note:** Only tested on a **2020 Tata Nexon 1.2L Turbo Petrol (6-speed manual)**. Should work on any car with standard OBD2 over CAN (ISO 15765-4, 500 kbps).
+> **Note:** Only tested on a **2020 Tata Altroz 1.2L Turbo Petrol (6-speed manual)**. Should work on any car with standard OBD2 over CAN (ISO 15765-4, 500 kbps).
 
 ## Using AI to review your driving data
 
@@ -17,7 +17,7 @@ The AI can analyze thousands of rows of sensor data in seconds and give you a pl
 
 Here's an example report generated from a real driving session:
 
-![OBD Health & Driving Report](images/nexon_obd_report.png)
+![OBD Health & Driving Report](images/Altroz_obd_report.png)
 
 ## What it does
 
@@ -27,7 +27,7 @@ Here's an example report generated from a real driving session:
 - **WiFi dashboard** — connect your phone to see live gauges, download CSV files, and check PID status
 - **Smart polling** — fast-changing PIDs polled at ~4 Hz, slow-changing PIDs at ~1 Hz
 - **Auto-disables unsupported PIDs** — if a PID times out 10 times in a row, it stops polling it
-- **Estimates current gear** from RPM/speed ratio (calibrated for Nexon 6MT gearbox)
+- **Estimates current gear** from RPM/speed ratio (calibrated for Altroz 6MT gearbox)
 
 ## Parts list
 
@@ -118,7 +118,7 @@ Plug the ESP32 into the car's USB port (or a USB power bank for bench testing). 
 
 On startup, the OLED (if connected) shows:
 ```
-Nexon CAN Logger
+Altroz CAN Logger
 
 SD  Session #1            (or "LittleFS  Session #1" if no SD card)
 Total: 59000 MB
@@ -173,7 +173,7 @@ Plus periodic status:
 - **SD card is optional.** If no SD card is found, the logger falls back to ESP32 internal flash (LittleFS, ~1.5 MB). That's roughly 30 minutes of logging at 4 Hz — download the CSV over WiFi before it fills up. If neither SD nor LittleFS can mount, the ESP32 won't start (nothing to log to).
 - **OLED is optional.** If not connected, everything else works normally.
 - **Not all PIDs will work on every car.** The logger auto-disables PIDs that your car's ECU doesn't support. Check the PID Status page (`/timeouts`) to see which ones your car responds to.
-- **Gear estimation** is calibrated for the Nexon 1.2T 6-speed manual gearbox. If you're using a different car, you'll need to adjust the `GEAR_RATIO_MIN[]` and `GEAR_RATIO_MAX[]` arrays in the code.
+- **Gear estimation** is calibrated for the Altroz 1.2T 6-speed manual gearbox. If you're using a different car, you'll need to adjust the `GEAR_RATIO_MIN[]` and `GEAR_RATIO_MAX[]` arrays in the code.
 - **WiFi range** is limited to a few meters — it's meant for use inside the car.
 
 ## 3D Printable Cases
