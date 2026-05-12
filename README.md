@@ -17,7 +17,7 @@ The AI can analyze thousands of rows of sensor data in seconds and give you a pl
 
 Here's an example report generated from a real driving session:
 
-![OBD Health & Driving Report](images/Altroz_obd_report.png)
+![OBD Health & Driving Report](result.png)
 
 ## What it does
 
